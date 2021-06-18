@@ -6,18 +6,14 @@ class ArticlesController < ApplicationController
 
     def index
         @articles= Article.all
-
     end
 
     def new
-        @article = Article.new
-            
+        @article = Article.new            
     end
-
     
     def edit
-        @article = Article.find(params[:id])
-    
+        @article = Article.find(params[:id])    
     end
 
     def create
@@ -27,8 +23,7 @@ class ArticlesController < ApplicationController
             flash[:notice] = "Article has been saved successfully"
             redirect_to @article
         else
-            render 'new'
-        
+            render 'new'        
         end
     end
 
@@ -36,12 +31,9 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
         if @article.update(params.require(:article).permit(:title, :description))
             flash[:notice] = "Article has been updated successfully"
-            redirect_to @article
-        
+            redirect_to @article        
         else
-            render 'edit'
-
-        
+            render 'edit'        
         end
 
     end
